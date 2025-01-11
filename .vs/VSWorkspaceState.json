@@ -1,9 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\myapp",
-    "\\myproject"
+    "\\myapp"
   ],
-  "SelectedNode": "\\myproject\\urls.py",
+  "SelectedNode": "\\myapp\\models.py",
   "PreviewInSolutionExplorer": false
 }
