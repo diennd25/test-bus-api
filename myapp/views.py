@@ -4,8 +4,8 @@ from datetime import datetime
 import json
 import pytz
 
-# Define the target time zone (e.g., GMT)
-target_timezone = pytz.timezone('Etc/GMT')
+# Define the Hanoi timezone
+hanoi_timezone = pytz.timezone('Asia/Ho_Chi_Minh')
 
 def home(request):
     return HttpResponse("Welcome to the Bus Management API")
@@ -15,8 +15,8 @@ def receive_gps_data(request):
     if request.method == 'POST':
         try:
             data = json.loads(request.body)
-            # Convert current time to target time zone
-            current_time = datetime.now(pytz.utc).astimezone(target_timezone)
+            # Convert current time to Hanoi timezone
+            current_time = datetime.now(hanoi_timezone)
             data['timestamp'] = current_time.isoformat()
             print("Received GPS data:", data)
             return JsonResponse({'status': 'success', 'data': data}, status=200)
@@ -29,8 +29,8 @@ def receive_rfid_data(request):
     if request.method == 'POST':
         try:
             data = json.loads(request.body)
-            # Convert current time to target time zone
-            current_time = datetime.now(pytz.utc).astimezone(target_timezone)
+            # Convert current time to Hanoi timezone
+            current_time = datetime.now(hanoi_timezone)
             data['scan_time'] = current_time.isoformat()
             print("Received RFID data:", data)
             return JsonResponse({'status': 'success', 'data': data}, status=200)
