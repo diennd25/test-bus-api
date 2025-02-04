@@ -2,7 +2,10 @@ from django.http import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from datetime import datetime
 import json
-from .models import GPSData, RFIDData
+from .models import GPSData
+import logging
+
+logger = logging.getLogger(__name__)
 
 def home(request):
     return HttpResponse("Welcome to the Bus Management API")
@@ -12,6 +15,7 @@ def receive_gps_data(request):
     if request.method == 'POST':
         try:
             data = json.loads(request.body)
+            logger.info(f"Received GPS data: {data}")
             gps_data = GPSData(
                 device_id=data['device_id'],
                 location=data['location'],
@@ -20,6 +24,7 @@ def receive_gps_data(request):
             gps_data.save()
             return JsonResponse({'status': 'success', 'data': data}, status=200)
         except json.JSONDecodeError:
+            logger.error("Invalid JSON received")
             return JsonResponse({'status': 'error', 'message': 'Invalid JSON'}, status=400)
     return JsonResponse({'status': 'error', 'message': 'Invalid request method'}, status=405)
 
