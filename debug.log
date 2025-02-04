@@ -1,0 +1,8 @@
+(0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None; alias=default
+(0.000) SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"; args=(); alias=default
+(0.000) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."username" = '701107' LIMIT 21; args=('701107',); alias=default
+(0.000) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."username" = '701107' LIMIT 21; args=('701107',); alias=default
+(0.000) INSERT INTO "auth_user" ("password", "last_login", "is_superuser", "username", "first_name", "last_name", "email", "is_staff", "is_active", "date_joined") VALUES ('pbkdf2_sha256$600000$G8537NTlc5sDu3Up975Ab6$Q5iam0C2MEiRcWGbY4+ae8o1pYwXGUv6TNOEKIZeXwI=', NULL, 1, '701107', '', '', 'diennd.vnu@gmail.com', 1, 1, '2025-02-04 04:28:22.592651') RETURNING "auth_user"."id"; args=('pbkdf2_sha256$600000$G8537NTlc5sDu3Up975Ab6$Q5iam0C2MEiRcWGbY4+ae8o1pYwXGUv6TNOEKIZeXwI=', None, True, '701107', '', '', 'diennd.vnu@gmail.com', True, True, '2025-02-04 04:28:22.592651'); alias=default

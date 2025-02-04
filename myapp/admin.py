@@ -1,3 +1,5 @@
 from django.contrib import admin
+from .models import GPSData, RFIDData
 
-# Register your models here.
+admin.site.register(GPSData)
+admin.site.register(RFIDData)
