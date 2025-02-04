@@ -2,7 +2,7 @@ from django.http import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from datetime import datetime
 import json
-from .models import GPSData
+from .models import GPSData, RFIDData
 import logging
 
 logger = logging.getLogger(__name__)
@@ -22,6 +22,7 @@ def receive_gps_data(request):
                 speed=data['speed']
             )
             gps_data.save()
+            logger.info("GPS data saved successfully")
             return JsonResponse({'status': 'success', 'data': data}, status=200)
         except json.JSONDecodeError:
             logger.error("Invalid JSON received")
@@ -33,12 +34,15 @@ def receive_rfid_data(request):
     if request.method == 'POST':
         try:
             data = json.loads(request.body)
+            logger.info(f"Received RFID data: {data}")
             rfid_data = RFIDData(
                 device_id=data['device_id'],
                 UID=data['UID']
             )
             rfid_data.save()
+            logger.info("RFID data saved successfully")
             return JsonResponse({'status': 'success', 'data': data}, status=200)
         except json.JSONDecodeError:
+            logger.error("Invalid JSON received")
             return JsonResponse({'status': 'error', 'message': 'Invalid JSON'}, status=400)
     return JsonResponse({'status': 'error', 'message': 'Invalid request method'}, status=405)
