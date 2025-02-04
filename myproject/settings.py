@@ -25,6 +25,25 @@ SECRET_KEY = 'django-insecure-ga5uqb3lweyiobylh7-p5*^ji_%z2sv!qcvumvo#3f8^+eg*__
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': 'debug.log',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}
+
 ALLOWED_HOSTS = ['test-bus-api.onrender.com', 'localhost', '127.0.0.1']
 
 
