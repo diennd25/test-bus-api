@@ -1,9 +1,10 @@
 {
   "ExpandedNodes": [
     "",
+    "\\.venv",
     "\\myapp",
     "\\myproject"
   ],
-  "SelectedNode": "\\myapp\\views.py",
+  "SelectedNode": "\\requirements.txt",
   "PreviewInSolutionExplorer": false
 }
