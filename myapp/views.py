@@ -46,3 +46,15 @@ def receive_rfid_data(request):
             logger.error("Invalid JSON received")
             return JsonResponse({'status': 'error', 'message': 'Invalid JSON'}, status=400)
     return JsonResponse({'status': 'error', 'message': 'Invalid request method'}, status=405)
+
+def get_gps_data(request):
+    if request.method == 'GET':
+        gps_data = list(GPSData.objects.all().values())
+        return JsonResponse({'status': 'success', 'data': gps_data}, status=200)
+    return JsonResponse({'status': 'error', 'message': 'Invalid request method'}, status=405)
+
+def get_rfid_data(request):
+    if request.method == 'GET':
+        rfid_data = list(RFIDData.objects.all().values())
+        return JsonResponse({'status': 'success', 'data': rfid_data}, status=200)
+    return JsonResponse({'status': 'error', 'message': 'Invalid request method'}, status=405)
