@@ -49,7 +49,7 @@ LOGGING = {
     },
 }
 
-ALLOWED_HOSTS = ['diennd25.pythonanywhere.com']
+ALLOWED_HOSTS = ['112.78.3.60', 'localhost', '127.0.0.1']
 
 
 # Application definition
