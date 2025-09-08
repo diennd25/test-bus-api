@@ -205,3 +205,7 @@ def convert_to_decimal_gps(value, direction):
     if direction in ["S", "W"]:
         decimal = -decimal
     return decimal
+
+
+def health_check(request):
+    return JsonResponse({'status': 'ok'})
